@@ -15,7 +15,7 @@
     overflow-y: scroll;
   }
   section {
-    height: 100vh;
+    height: calc(100vh - 60px); /* subtract vertical padding */;
     padding: 60px 10vw;
     scroll-snap-align: start;
     display: flex;
@@ -26,10 +26,12 @@
     margin-top: 0;
   }
   .media {
-    max-width: 700px;
     width: 100%;
+    height: auto;      /* maintain aspect ratio */
+    max-width: 700px;  /* optional for large screens */
     margin-top: 20px;
     border-radius: 8px;
+    object-fit: cover; /* optional for consistent cropping */
   }
   .button {
     display: inline-block;
@@ -41,6 +43,18 @@
     font-size: 18px;
     border-radius: 8px;
   }
+
+  /* Mobile styles */
+  @media (max-width: 768px) {
+    section {
+      height: auto; /* allow content to flow naturally */
+      padding: 40px 5vw;
+    }
+    h1, h2 {
+      font-size: 1.8em;
+    }
+  }
+
   .button:hover {
     background: #155ec4;
   }
